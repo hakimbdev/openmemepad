@@ -1,0 +1,20 @@
+{
+  "networks": {
+    "mainnet": {
+      "endpoint": "https://toncenter.com/api/v2/jsonRPC",
+      "apiKey": "RU89wxRrzNX9EcRvmTrJwc0Mnn5XBuRj"
+    },
+    "testnet": {
+      "endpoint": "https://testnet.toncenter.com/api/v2/jsonRPC",
+      "apiKey": "RU89wxRrzNX9EcRvmTrJwc0Mnn5XBuRj"
+    }
+  },
+  "compiler": {
+    "version": "0.57.0"
+  },
+  "contracts": {
+    "FungibleToken": {
+      "path": "./contracts/FungibleToken.sol"
+    }
+  }
+} 

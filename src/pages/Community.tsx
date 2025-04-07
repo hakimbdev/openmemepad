@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Users, Twitter } from 'lucide-react';
+import { MessageCircle, Users, Twitter, ExternalLink } from 'lucide-react';
 
 const Community = () => {
   return (
@@ -17,9 +17,15 @@ const Community = () => {
               <p className="text-gray-600">Join our active Telegram community</p>
             </div>
           </div>
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <a 
+            href="https://t.me/openmemepad" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
+          >
             Join Telegram
-          </button>
+            <ExternalLink className="ml-1" size={14} />
+          </a>
         </div>
 
         <div className="bg-white rounded-lg p-6 shadow-lg">
@@ -32,9 +38,15 @@ const Community = () => {
               <p className="text-gray-600">Follow us for latest updates</p>
             </div>
           </div>
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <a 
+            href="https://twitter.com/openmemepad" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
             Follow on Twitter
-          </button>
+            <ExternalLink className="ml-1" size={14} />
+          </a>
         </div>
 
         <div className="bg-white rounded-lg p-6 shadow-lg">
@@ -47,9 +59,15 @@ const Community = () => {
               <p className="text-gray-600">Join our Discord community</p>
             </div>
           </div>
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <a 
+            href="https://discord.gg/openmemepad" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
             Join Discord
-          </button>
+            <ExternalLink className="ml-1" size={14} />
+          </a>
         </div>
       </div>
     </div>
