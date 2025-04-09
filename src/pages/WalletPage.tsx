@@ -134,11 +134,11 @@ const WalletPage = () => {
       <div className="bg-white rounded-lg p-6 shadow-lg mb-6">
         <div className="flex justify-between items-start mb-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Wallet className="text-blue-600" size={24} />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Total Balance</h3>
+          <div className="p-3 bg-blue-100 rounded-full">
+            <Wallet className="text-blue-600" size={24} />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold">Total Balance</h3>
               <p className="text-2xl font-bold text-blue-600">
                 {refreshing ? '...' : user?.balance ? `${user.balance.toFixed(4)} TON` : '0 TON'}
               </p>
@@ -190,18 +190,18 @@ const WalletPage = () => {
             <p className="text-gray-500">Loading transactions...</p>
           </div>
         ) : transactions.length > 0 ? (
-          <div className="space-y-4">
-            {transactions.map((tx, index) => (
-              <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100">
-                <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-full ${tx.type === 'sent' ? 'bg-red-100' : 'bg-green-100'}`}>
-                    {tx.type === 'sent' ? (
-                      <ArrowUpRight className="text-red-600" size={20} />
-                    ) : (
-                      <ArrowDownRight className="text-green-600" size={20} />
-                    )}
-                  </div>
-                  <div>
+        <div className="space-y-4">
+          {transactions.map((tx, index) => (
+            <div key={index} className="flex items-center justify-between py-3 border-b border-gray-100">
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-full ${tx.type === 'sent' ? 'bg-red-100' : 'bg-green-100'}`}>
+                  {tx.type === 'sent' ? (
+                    <ArrowUpRight className="text-red-600" size={20} />
+                  ) : (
+                    <ArrowDownRight className="text-green-600" size={20} />
+                  )}
+                </div>
+                <div>
                     <div className="flex items-center gap-2">
                       <p className="font-semibold">
                         {tx.type === 'sent' ? 'Sent' : 'Received'} {tx.token}
@@ -215,29 +215,29 @@ const WalletPage = () => {
                         <ExternalLink size={14} />
                       </a>
                     </div>
-                    <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500">
                       {tx.type === 'sent' ? 'To: ' : 'From: '}
                       {tx.address.length > 20 
                         ? `${tx.address.slice(0, 10)}...${tx.address.slice(-8)}`
                         : tx.address}
-                    </p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className={`font-semibold ${tx.type === 'sent' ? 'text-red-600' : 'text-green-600'}`}>
-                    {tx.type === 'sent' ? '-' : '+'}{tx.amount} {tx.token}
                   </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className={`font-semibold ${tx.type === 'sent' ? 'text-red-600' : 'text-green-600'}`}>
+                  {tx.type === 'sent' ? '-' : '+'}{tx.amount} {tx.token}
+                </p>
                   <div className="flex items-center justify-end gap-1 text-sm text-gray-500">
-                    <Clock size={14} />
-                    <span>{tx.time}</span>
+                  <Clock size={14} />
+                  <span>{tx.time}</span>
                     {tx.usdValue && (
                       <span className="ml-2 text-gray-400">({tx.usdValue})</span>
                     )}
-                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
         ) : (
           <p className="text-gray-500 text-center py-8">No transactions found</p>
         )}

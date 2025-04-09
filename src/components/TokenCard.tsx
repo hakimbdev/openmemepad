@@ -2,19 +2,7 @@ import React from 'react';
 import { Rocket, Users, TrendingUp, Activity } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
-
-export interface Token {
-  id: number;
-  name: string;
-  symbol: string;
-  address: string;
-  price: number;
-  change_24h: number;
-  volume_24h: number;
-  marketCap: number;
-  holders: number;
-  created_at: string;
-}
+import { Token } from '../services/tokenService';
 
 interface TokenCardProps {
   token: Token;
@@ -73,43 +61,43 @@ const TokenCard: React.FC<TokenCardProps> = ({
   return (
     <div 
       onClick={handleBuyToken}
-      className={`p-4 rounded-xl ${isSpotlight ? 'bg-blue-600 text-white' : 'bg-white'} shadow-lg transition-transform hover:scale-[1.02] cursor-pointer`}
+      className={`p-3 sm:p-4 rounded-xl ${isSpotlight ? 'bg-blue-600 text-white' : 'bg-white'} shadow-lg transition-transform hover:scale-[1.02] cursor-pointer`}
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className={`p-2 rounded-full ${isSpotlight ? 'bg-blue-500' : 'bg-blue-100'}`}>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className={`p-1.5 sm:p-2 rounded-full ${isSpotlight ? 'bg-blue-500' : 'bg-blue-100'}`}>
             {isNew ? (
-              <Activity size={24} className={isSpotlight ? 'text-white' : 'text-blue-600'} />
+              <Activity size={18} className={`${isSpotlight ? 'text-white' : 'text-blue-600'} sm:w-6 sm:h-6`} />
             ) : (
-              <Rocket size={24} className={isSpotlight ? 'text-white' : 'text-blue-600'} />
+              <Rocket size={18} className={`${isSpotlight ? 'text-white' : 'text-blue-600'} sm:w-6 sm:h-6`} />
             )}
           </div>
           <div>
             <div className="flex items-center">
-              <h3 className="font-bold text-lg">{symbol}</h3>
+              <h3 className="font-bold text-base sm:text-lg">{symbol}</h3>
               {isNew && (
-                <span className="ml-2 px-1.5 py-0.5 text-xs font-medium bg-green-500 text-white rounded">NEW</span>
+                <span className="ml-1 sm:ml-2 px-1 sm:px-1.5 py-0.5 text-[10px] sm:text-xs font-medium bg-green-500 text-white rounded">NEW</span>
               )}
             </div>
-            <p className={`text-sm ${isSpotlight ? 'text-blue-100' : 'text-gray-500'}`}>{name}</p>
+            <p className={`text-xs sm:text-sm ${isSpotlight ? 'text-blue-100' : 'text-gray-500'}`}>{name}</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="font-bold text-lg">{formatNumber(marketCap)}</p>
+          <p className="font-bold text-sm sm:text-lg">{formatNumber(marketCap)}</p>
           <div className="flex items-center justify-end gap-1">
             <TrendingUp 
-              size={14} 
-              className={isPositive ? 'text-green-500' : 'text-red-500'} 
+              size={12} 
+              className={`${isPositive ? 'text-green-500' : 'text-red-500'} sm:w-3.5 sm:h-3.5`} 
               style={{ transform: isPositive ? 'none' : 'rotate(180deg)' }}
             />
-            <p className={`text-sm ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+            <p className={`text-xs sm:text-sm ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
               {isPositive ? '+' : ''}{change_24h.toFixed(1)}%
             </p>
           </div>
         </div>
       </div>
-      <div className="mt-3 mb-2">
-        <p className={`text-lg font-semibold ${isSpotlight ? 'text-white' : 'text-gray-700'}`}>
+      <div className="mt-2 sm:mt-3 mb-1.5 sm:mb-2">
+        <p className={`text-sm sm:text-lg font-semibold ${isSpotlight ? 'text-white' : 'text-gray-700'}`}>
           {price < 0.000001 
             ? price.toExponential(2) 
             : price.toFixed(8)
@@ -117,13 +105,13 @@ const TokenCard: React.FC<TokenCardProps> = ({
         </p>
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Users size={16} className={isSpotlight ? 'text-blue-200' : 'text-gray-400'} />
-          <span className={`text-sm ${isSpotlight ? 'text-blue-200' : 'text-gray-500'}`}>
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Users size={12} className={`${isSpotlight ? 'text-blue-200' : 'text-gray-400'} sm:w-4 sm:h-4`} />
+          <span className={`text-xs sm:text-sm ${isSpotlight ? 'text-blue-200' : 'text-gray-500'}`}>
             {holders.toLocaleString()} holders
           </span>
         </div>
-        <span className={`text-sm ${isSpotlight ? 'text-blue-200' : 'text-gray-500'}`}>
+        <span className={`text-xs sm:text-sm ${isSpotlight ? 'text-blue-200' : 'text-gray-500'}`}>
           Vol: {formatVolume(volume_24h)}
         </span>
       </div>
